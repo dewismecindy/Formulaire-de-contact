@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de contact</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <script src="./assets/js/main.js"></script>
+  </head>
+  <body>
+    <main class="mainContainer">
+      <h1>Formulaire de contact</h1>
+      <form>
+        <label for="Prénom">
+          <input type="text" name="Prénom" id="Prénom" placeholder="Prénom" />
+        </label>
+
+        <label for="Nom">
+          <input type="text" name="Nom" id="Nom" placeholder="Nom" />
+        </label>
+
+        <label for="Sujet">
+          <input type="sujet" name="sujet" id="sujet" placeholder="sujet" />
+        </label>
+
+        <label for="">
+          <input type="email" name="email" id="email" placeholder="email" />
+        </label>
+        <textarea
+          name="Message"
+          id="message"
+          cols="30"
+          rows="30"
+          placeholder="Votre message ici ..."
+        ></textarea>
+        <button id="hide" type="submit">Envoyer un message</button>
+        <p>Le texte sera caché au click</p>
+      </form>
+    </main>
+  </body>
+</html>
