@@ -1,12 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("page chargée");
+  console.log("document loaded");
 
   /*   document.addEventListener("click", () => {
     console.log("clicked");
   }); */
 
-  console.log("button>>>"), document.querySelector("#hide");
+  document.querySelector("#hide").addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  /*     .addEventListener("click", () => console.log("click on button"));
-  document.querySelector("p").classList.add("hidden"); */
+    const data = {
+      prenom: document.querySelector("#prenom").value,
+      nom: document.querySelector("#nom").value,
+      email: document.querySelector("#email").value,
+      sujet: document.querySelector("#sujet").value,
+      message: document.querySelector("#message").value,
+    };
+
+    console.log(data);
+
+    /*  const response = await axios.post("http://localhost:3000/form", data);
+    console.log(response); */
+  });
 });

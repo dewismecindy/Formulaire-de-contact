@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulaire de contact</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 
@@ -14,30 +15,29 @@
     <main class="mainContainer">
       <h1>Formulaire de contact</h1>
       <form>
-        <label for="Prénom">
-          <input type="text" name="Prénom" id="Prénom" placeholder="Prénom" />
+        <label for="prenom">
+          <input type="text" name="prenom" id="prenom" placeholder="prenom" />
         </label>
 
-        <label for="Nom">
-          <input type="text" name="Nom" id="Nom" placeholder="Nom" />
+        <label for="nom">
+          <input type="text" name="nom" id="nom" placeholder="nom" />
         </label>
 
-        <label for="Sujet">
-          <input type="sujet" name="sujet" id="sujet" placeholder="sujet" />
+        <label for="sujet">
+          <input type="text" name="sujet" id="sujet" placeholder="sujet" />
         </label>
 
-        <label for="">
+        <label for="message">
           <input type="email" name="email" id="email" placeholder="email" />
         </label>
         <textarea
-          name="Message"
+          name="message"
           id="message"
           cols="30"
           rows="30"
           placeholder="Votre message ici ..."
         ></textarea>
         <button id="hide" type="submit">Envoyer un message</button>
-        <p>Le texte sera caché au click</p>
       </form>
     </main>
   </body>
