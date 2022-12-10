@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector("#hide").addEventListener("click", async (e) => {
     e.preventDefault();
-
     const data = {
       prenom: document.querySelector("#prenom").value,
       nom: document.querySelector("#nom").value,
@@ -18,7 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(data);
 
-    /*  const response = await axios.post("http://localhost:3000/form", data);
-    console.log(response); */
+    try {
+      const response = await axios.post("http://localhost:3000/form", {
+        prenom,
+        nom,
+        email,
+        message,
+      });
+
+      console.log("response>>>", response.data);
+    } catch (error) {
+      console.log(error);
+    }
   });
 });
