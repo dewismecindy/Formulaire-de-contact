@@ -1,33 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("document loaded");
+const $ = document;
 
-  /*   document.addEventListener("click", () => {
-    console.log("clicked");
-  }); */
+$.addEventListener("DOMContentLoaded", () => {
+  const form = $.querySelector("#contact-form");
+  const submitButton = $.querySelector("#submit-btn");
 
-  document.querySelector("#hide").addEventListener("click", async (e) => {
-    e.preventDefault();
+  // Fonction pour vider les champs du formulaire :
+  const cleanForm = () => {
+    form.reset();
+  };
+
+  // Fonction pour réactiver le bouton d'envoi du formulaire :
+  const isEnabled = () => {
+    submitButton.removeAttribute("disabled");
+    submitButton.classList.remove("disabled-btn");
+  };
+
+  // Fonction pour désactiver le bouton d'envoi du formulaire :
+  const isDisabled = () => {
+    submitButton.setAttribute("disabled", "disabled");
+    submitButton.classList.add("disabled-btn");
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    isDisabled();
+
     const data = {
-      prenom: document.querySelector("#prenom").value,
-      nom: document.querySelector("#nom").value,
-      email: document.querySelector("#email").value,
-      sujet: document.querySelector("#sujet").value,
-      message: document.querySelector("#message").value,
+      firstname: $.querySelector("#firstname").value,
+      lastname: $.querySelector("#lastname").value,
+      email: $.querySelector("#email").value,
+      subject: $.querySelector("#subject").value,
+      message: $.querySelector("#message").value,
     };
 
-    console.log(data);
-
     try {
-      const response = await axios.post("http://localhost:3000/form", {
-        prenom,
-        nom,
-        email,
-        message,
-      });
+      const response = await axios.post("http://localhost:3000/form", data);
+      if (response.status === 200) {
+        alert("Votre formulaire a bien été envoyé");
+        cleanForm();
+        isEnabled();
+      }
+    } catch (e) {
+      if (e.response.data.error === "Missing parameters") {
+        alert("Veuillez remplir tous les champs du formulaire");
+      } else {
+        alert("Une erreur est survenue");
+        cleanForm();
+      }
 
-      console.log("response>>>", response.data);
-    } catch (error) {
-      console.log(error);
+      isEnabled();
     }
   });
 });
